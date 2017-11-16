@@ -29,11 +29,21 @@
     
     UIApplicationShortcutItem *shortcutItem = [launchOptions valueForKey:UIApplicationLaunchOptionsShortcutItemKey];
     if (shortcutItem) {
-        [self performActionForShortcutItem:shortcutItem];
+        if([shortcutItem.type isEqualToString:@"douyu.tv.test"]){
+            [self openSpecifiedVC];
+        }
         return NO;
     }
     
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    if ([url.absoluteString hasPrefix:@"TestTodayExtension://Test"]) {
+        [self openSpecifiedVC];
+        return YES;
+    }
+    return NO;
 }
 
 - (void)creatShortcutItem
@@ -51,9 +61,8 @@
     [UIApplication sharedApplication].shortcutItems = @[item];
 }
 
-- (void)performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem {
+- (void)openSpecifiedVC {
     //判断先前我们设置的快捷选项标签唯一标识，根据不同标识执行不同操作
-    if([shortcutItem.type isEqualToString:@"douyu.tv.test"]){
         TestViewController *testVC = [TestViewController getInstance];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:testVC];
         if ([self.window.rootViewController isKindOfClass:[UINavigationController class]]) {
@@ -65,11 +74,12 @@
                 
             }];
         }
-    }
 }
 
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
-    [self performActionForShortcutItem:shortcutItem];
+    if([shortcutItem.type isEqualToString:@"douyu.tv.test"]){
+        [self openSpecifiedVC];
+    }
     if (completionHandler) {
         completionHandler(YES);
     }
