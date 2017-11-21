@@ -17,11 +17,14 @@
 		5A3728981F4295FA00781221 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A3728971F4295FA00781221 /* Assets.xcassets */; };
 		5A37289B1F4295FA00781221 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A3728991F4295FA00781221 /* LaunchScreen.storyboard */; };
 		5A3728A41F42972B00781221 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3728A31F42972B00781221 /* TestViewController.m */; };
+		5A549D7F1FC2F7450065E41E /* UIColor+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A549D7E1FC2F7450065E41E /* UIColor+Utils.m */; };
+		5A549D801FC2FD820065E41E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A3728971F4295FA00781221 /* Assets.xcassets */; };
 		5AC684531FBD7624002F4055 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC684521FBD7624002F4055 /* PreviewViewController.m */; };
 		5AC6845A1FBDB53D002F4055 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AC684591FBDB53D002F4055 /* NotificationCenter.framework */; };
 		5AC6845E1FBDB53D002F4055 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6845D1FBDB53D002F4055 /* TodayViewController.m */; };
 		5AC684651FBDB53E002F4055 /* TestTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5AC684581FBDB53D002F4055 /* TestTodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5ACA1E031F9F1EDE004F6CF6 /* FileHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA1E021F9F1EDE004F6CF6 /* FileHash.m */; };
+		5E26D97A1CAA5D554C6AE55F /* libPods-TestTodayExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCA76636867EB9136991F03 /* libPods-TestTodayExtension.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		03804A26EB4C45BAF38E9FD5 /* libPods-TestAutolayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestAutolayout.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		39363E021BD8312D95E61F61 /* Pods-TestTodayExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTodayExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestTodayExtension/Pods-TestTodayExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		3FE9C1FEF7A658298F36B9CF /* Pods-TestAutolayout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAutolayout.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestAutolayout/Pods-TestAutolayout.release.xcconfig"; sourceTree = "<group>"; };
 		5A2DA7491F5D70B600121285 /* DYCustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYCustomButton.h; sourceTree = "<group>"; };
 		5A2DA74A1F5D70B600121285 /* DYCustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYCustomButton.m; sourceTree = "<group>"; };
@@ -67,6 +71,9 @@
 		5A37289C1F4295FA00781221 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A3728A21F42972A00781221 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		5A3728A31F42972B00781221 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		5A549D7D1FC2F7450065E41E /* UIColor+Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Utils.h"; sourceTree = "<group>"; };
+		5A549D7E1FC2F7450065E41E /* UIColor+Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Utils.m"; sourceTree = "<group>"; };
+		5A6982061FC2E3E00082E91C /* TestTodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestTodayExtension.entitlements; sourceTree = "<group>"; };
 		5AC684501FBD5DA7002F4055 /* TestAutolayout.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestAutolayout.entitlements; sourceTree = "<group>"; };
 		5AC684511FBD7624002F4055 /* PreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
 		5AC684521FBD7624002F4055 /* PreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
@@ -77,7 +84,9 @@
 		5AC684621FBDB53D002F4055 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5ACA1E011F9F1EDE004F6CF6 /* FileHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileHash.h; sourceTree = "<group>"; };
 		5ACA1E021F9F1EDE004F6CF6 /* FileHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileHash.m; sourceTree = "<group>"; };
+		96923B1482724689D181263E /* Pods-TestTodayExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTodayExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestTodayExtension/Pods-TestTodayExtension.release.xcconfig"; sourceTree = "<group>"; };
 		96C90DD95362DB8A18912E75 /* Pods-TestAutolayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAutolayout.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestAutolayout/Pods-TestAutolayout.debug.xcconfig"; sourceTree = "<group>"; };
+		BFCA76636867EB9136991F03 /* libPods-TestTodayExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestTodayExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AC6845A1FBDB53D002F4055 /* NotificationCenter.framework in Frameworks */,
+				5E26D97A1CAA5D554C6AE55F /* libPods-TestTodayExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +115,8 @@
 			children = (
 				96C90DD95362DB8A18912E75 /* Pods-TestAutolayout.debug.xcconfig */,
 				3FE9C1FEF7A658298F36B9CF /* Pods-TestAutolayout.release.xcconfig */,
+				39363E021BD8312D95E61F61 /* Pods-TestTodayExtension.debug.xcconfig */,
+				96923B1482724689D181263E /* Pods-TestTodayExtension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -114,6 +126,7 @@
 			children = (
 				03804A26EB4C45BAF38E9FD5 /* libPods-TestAutolayout.a */,
 				5AC684591FBDB53D002F4055 /* NotificationCenter.framework */,
+				BFCA76636867EB9136991F03 /* libPods-TestTodayExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -176,8 +189,11 @@
 		5AC6845B1FBDB53D002F4055 /* TestTodayExtension */ = {
 			isa = PBXGroup;
 			children = (
+				5A6982061FC2E3E00082E91C /* TestTodayExtension.entitlements */,
 				5AC6845C1FBDB53D002F4055 /* TodayViewController.h */,
 				5AC6845D1FBDB53D002F4055 /* TodayViewController.m */,
+				5A549D7D1FC2F7450065E41E /* UIColor+Utils.h */,
+				5A549D7E1FC2F7450065E41E /* UIColor+Utils.m */,
 				5AC684621FBDB53D002F4055 /* Info.plist */,
 			);
 			path = TestTodayExtension;
@@ -212,9 +228,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5AC684661FBDB53E002F4055 /* Build configuration list for PBXNativeTarget "TestTodayExtension" */;
 			buildPhases = (
+				5F39BA39030E2D805FC1E1E1 /* [CP] Check Pods Manifest.lock */,
 				5AC684541FBDB53D002F4055 /* Sources */,
 				5AC684551FBDB53D002F4055 /* Frameworks */,
 				5AC684561FBDB53D002F4055 /* Resources */,
+				D83BB719806E7046948ED6D9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -239,6 +257,9 @@
 						DevelopmentTeam = KW288R5J73;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
@@ -251,6 +272,11 @@
 						CreatedOnToolsVersion = 9.1;
 						DevelopmentTeam = KW288R5J73;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -288,6 +314,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A549D801FC2FD820065E41E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +354,24 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestAutolayout/Pods-TestAutolayout-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5F39BA39030E2D805FC1E1E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TestTodayExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BD3950CCD7BE9DE20544AE20 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -343,6 +388,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D83BB719806E7046948ED6D9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TestTodayExtension/Pods-TestTodayExtension-resources.sh",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestTodayExtension/Pods-TestTodayExtension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -368,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AC6845E1FBDB53D002F4055 /* TodayViewController.m in Sources */,
+				5A549D7F1FC2F7450065E41E /* UIColor+Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +595,7 @@
 		};
 		5AC684671FBDB53E002F4055 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39363E021BD8312D95E61F61 /* Pods-TestTodayExtension.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -540,6 +605,7 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = TestTodayExtension/TestTodayExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = KW288R5J73;
@@ -547,10 +613,10 @@
 				INFOPLIST_FILE = TestTodayExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tv.douyu.live.TestTodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = tv.douyu.live.DYReplayKitExtUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "127ca1c9-98f8-45a4-b747-2ac9f4dad3b2";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development *";
+				PROVISIONING_PROFILE = "51e20546-2162-43c0-8218-7ad7ee0926c7";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development tv.douyu.live.DYReplayKitExtUI";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -558,6 +624,7 @@
 		};
 		5AC684681FBDB53E002F4055 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96923B1482724689D181263E /* Pods-TestTodayExtension.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -567,6 +634,7 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = TestTodayExtension/TestTodayExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = KW288R5J73;
@@ -574,10 +642,10 @@
 				INFOPLIST_FILE = TestTodayExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tv.douyu.live.TestTodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = tv.douyu.live.DYReplayKitExtUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "127ca1c9-98f8-45a4-b747-2ac9f4dad3b2";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development *";
+				PROVISIONING_PROFILE = "51e20546-2162-43c0-8218-7ad7ee0926c7";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development tv.douyu.live.DYReplayKitExtUI";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

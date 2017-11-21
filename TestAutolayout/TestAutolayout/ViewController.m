@@ -14,6 +14,8 @@
 @interface ViewController ()
 @property (nonatomic, strong) UILabel *touchLabel;
 @property (nonatomic, strong) UILabel *touchTipValueLabel;
+@property (nonatomic, strong) UIDatePicker *datePicker;
+@property (nonatomic, strong) UITextField *textField;
 @end
 
 @implementation ViewController
@@ -35,6 +37,20 @@
         make.top.mas_equalTo(70);
         make.centerX.mas_equalTo(self.view);
     }];
+    UITextField *textField = [[UITextField alloc] init];
+    [self.view addSubview:textField];
+    [textField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.touchTipValueLabel.mas_bottom).offset(0);
+        make.size.mas_equalTo(CGSizeMake(100, 44));
+        make.centerX.mas_equalTo(self.view);
+    }];
+    UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    [datePicker addTarget:self action:@selector(dateChanged) forControlEvents:UIControlEventValueChanged];
+    self.datePicker = datePicker;
+    textField.inputView = datePicker;
+    textField.borderStyle = UITextBorderStyleLine;
+    self.textField = textField;
 }
 
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -45,6 +61,21 @@
     if (touch.view.tag == 520) {
         self.touchTipValueLabel.text = [NSString stringWithFormat:@"force:%f\n maximumPossibleForce:%f",touch.force,touch.maximumPossibleForce];
     }
+}
+
+- (void)dateChanged {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    self.textField.text = [formatter stringFromDate:self.datePicker.date];
+    // NSUserDefaults共享数据
+//    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.tv.douyu.live"];
+//    [shared setObject:self.textField.text forKey:@"TestAutolayoutTime"];
+//    [shared synchronize];
+    
+    // NSFileManager共享数据
+    NSURL *containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.tv.douyu.live"];
+    containerURL = [containerURL URLByAppendingPathComponent:@"Library/Caches/widget"];
+    BOOL result = [self.textField.text writeToURL:containerURL atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 
 #pragma mark - getter and setter
