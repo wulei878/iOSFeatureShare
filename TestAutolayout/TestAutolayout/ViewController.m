@@ -10,6 +10,8 @@
 #import "TestViewController.h"
 #import "DYCustomButton.h"
 #import <Masonry/Masonry.h>
+#import "TANotificationManager.h"
+#import <AFNetworking/AFNetworking.h>
 
 @interface ViewController ()
 @property (nonatomic, strong) UILabel *touchLabel;
@@ -51,6 +53,19 @@
     textField.inputView = datePicker;
     textField.borderStyle = UITextBorderStyleLine;
     self.textField = textField;
+    
+    UIButton *shareButton = [[UIButton alloc] init];
+    [shareButton setTitle:@"分享" forState:UIControlStateNormal];
+    [shareButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [shareButton addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:shareButton];
+    [shareButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-50);
+        make.width.mas_equalTo(100);
+        make.height.mas_equalTo(44);
+        make.centerX.mas_equalTo(self.view);
+    }];
+    [[TANotificationManager sharedManager] createNotification];
 }
 
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -68,14 +83,29 @@
     [formatter setDateFormat:@"yyyy-MM-dd"];
     self.textField.text = [formatter stringFromDate:self.datePicker.date];
     // NSUserDefaults共享数据
-//    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.tv.douyu.live"];
-//    [shared setObject:self.textField.text forKey:@"TestAutolayoutTime"];
-//    [shared synchronize];
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.io.fanlv.potatso"];
+    [shared setObject:self.textField.text forKey:@"com.owen.iosfeature.todayextension.testAutolayoutTime"];
+    [shared synchronize];
     
     // NSFileManager共享数据
-    NSURL *containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.tv.douyu.live"];
-    containerURL = [containerURL URLByAppendingPathComponent:@"Library/Caches/widget"];
-    BOOL result = [self.textField.text writeToURL:containerURL atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//    NSURL *containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.tv.douyu.live"];
+//    containerURL = [containerURL URLByAppendingPathComponent:@"Library/Caches/widget"];
+//    BOOL result = [self.textField.text writeToURL:containerURL atomically:YES encoding:NSUTF8StringEncoding error:nil];
+}
+
+- (void)shareAction {
+    NSString *text = @"斗鱼直播-每个人的直播平台";
+    NSURL *shareURL = [NSURL URLWithString:@"https://www.douyu.com"];
+    NSArray *activityItems = @[text,shareURL];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    activityVC.completionWithItemsHandler = ^(UIActivityType  _Nullable activityType, BOOL completed, NSArray * _Nullable returnedItems, NSError * _Nullable activityError) {
+        if (completed) {
+            NSLog(@"分享成功");
+        } else {
+            NSLog(@"分享失败");
+        }
+    };
+    [self presentViewController:activityVC animated:YES completion:nil];
 }
 
 #pragma mark - getter and setter

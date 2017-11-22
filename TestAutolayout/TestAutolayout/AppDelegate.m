@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "TestViewController.h"
+#import "TANotificationManager.h"
+#import "ShareResultViewController.h"
 
 @interface AppDelegate ()
 
@@ -35,13 +37,29 @@
         return NO;
     }
     
+    [[TANotificationManager sharedManager] requestAuthorization];
     return YES;
 }
 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    
+}
+
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    ShareResultViewController *vc = [[ShareResultViewController alloc] init];
     if ([url.absoluteString hasPrefix:@"TestTodayExtension://Test"]) {
         [self openSpecifiedVC];
         return YES;
+    } else if ([url.absoluteString hasPrefix:@"shareExtension://shareImage"]) {
+        vc.isImageAttachment = YES;
+        [self openSpecifiedVC:vc];
+    } else if ([url.absoluteString hasPrefix:@"shareExtension://shareVideo"]) {
+        vc.isImageAttachment = NO;
+        [self openSpecifiedVC:vc];
     }
     return NO;
 }
@@ -55,7 +73,7 @@
     //UIApplicationShortcutIcon *icon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"Wonderful.png"];
     
     //创建快捷选项
-    UIApplicationShortcutItem * item = [[UIApplicationShortcutItem alloc] initWithType:@"douyu.tv.test" localizedTitle:@"测试" localizedSubtitle:nil icon:icon userInfo:nil];
+    UIApplicationShortcutItem * item = [[UIApplicationShortcutItem alloc] initWithType:@"douyu.tv.test" localizedTitle:@"一键开播" localizedSubtitle:nil icon:icon userInfo:nil];
     
     //添加到快捷选项数组
     [UIApplication sharedApplication].shortcutItems = @[item];
@@ -63,17 +81,22 @@
 
 - (void)openSpecifiedVC {
     //判断先前我们设置的快捷选项标签唯一标识，根据不同标识执行不同操作
-        TestViewController *testVC = [TestViewController getInstance];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:testVC];
-        if ([self.window.rootViewController isKindOfClass:[UINavigationController class]]) {
-            [((UINavigationController *)self.window.rootViewController) pushViewController:testVC animated:YES];
-        } else if (self.window.rootViewController.navigationController) {
-            [self.window.rootViewController.navigationController pushViewController:testVC animated:YES];
-        } else {
-            [self.window.rootViewController presentViewController:nav animated:YES completion:^{
-                
-            }];
-        }
+    TestViewController *testVC = [TestViewController getInstance];
+    [self openSpecifiedVC:testVC];
+}
+
+- (void)openSpecifiedVC:(UIViewController *)vc {
+    //判断先前我们设置的快捷选项标签唯一标识，根据不同标识执行不同操作
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    if ([self.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+        [((UINavigationController *)self.window.rootViewController) pushViewController:vc animated:YES];
+    } else if (self.window.rootViewController.navigationController) {
+        [self.window.rootViewController.navigationController pushViewController:vc animated:YES];
+    } else {
+        [self.window.rootViewController presentViewController:nav animated:YES completion:^{
+            
+        }];
+    }
 }
 
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {

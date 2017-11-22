@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -98,6 +99,51 @@
             </objects>
             <point key="canvasLocation" x="20" y="-460"/>
         </scene>
+        <!--Share Result View Controller-->
+        <scene sceneID="ZMB-dz-whb">
+            <objects>
+                <viewController storyboardIdentifier="ShareResultViewController" id="P2a-bf-itO" customClass="ShareResultViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6if-Pk-IJe"/>
+                        <viewControllerLayoutGuide type="bottom" id="cmC-1K-2bi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5sJ-V1-tdM">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pJp-S7-N30">
+                                <rect key="frame" x="0.0" y="32" width="666.5" height="375"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="pJp-S7-N30" secondAttribute="height" multiplier="16:9" id="EnN-jw-K71"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wal-RP-Q1d">
+                                <rect key="frame" x="0.0" y="32" width="200" height="267"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Fsf-TU-yA3"/>
+                                    <constraint firstAttribute="width" secondItem="wal-RP-Q1d" secondAttribute="height" multiplier="3:4" id="roh-D7-CEf"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pJp-S7-N30" firstAttribute="top" secondItem="6if-Pk-IJe" secondAttribute="bottom" id="7Zb-QD-C4O"/>
+                            <constraint firstItem="wal-RP-Q1d" firstAttribute="top" secondItem="6if-Pk-IJe" secondAttribute="bottom" id="A1w-GM-7Wf"/>
+                            <constraint firstAttribute="trailing" secondItem="pJp-S7-N30" secondAttribute="trailing" id="qhy-fS-Tga"/>
+                            <constraint firstItem="wal-RP-Q1d" firstAttribute="leading" secondItem="5sJ-V1-tdM" secondAttribute="leading" id="y5N-fh-IZL"/>
+                            <constraint firstItem="pJp-S7-N30" firstAttribute="leading" secondItem="5sJ-V1-tdM" secondAttribute="leading" id="zFA-PS-M10"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="wal-RP-Q1d" id="Sqq-4Q-tWC"/>
+                        <outlet property="playerContainer" destination="pJp-S7-N30" id="Qwy-z4-EUP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0J3-td-ZcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="748" y="-1017"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="lpE-61-Au8">
             <objects>
@@ -133,10 +179,23 @@
                                     <action selector="pushAction:" destination="hDT-gX-bNg" eventType="touchUpInside" id="Bnj-Vh-RQ9"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeM-sN-nql">
+                                <rect key="frame" x="547" y="165" width="70" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Ktk-2c-pwq"/>
+                                    <constraint firstAttribute="height" constant="44" id="M6M-j7-cAi"/>
+                                </constraints>
+                                <state key="normal" title="分享结果"/>
+                                <connections>
+                                    <segue destination="P2a-bf-itO" kind="show" id="SMf-BI-cjZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kGY-SP-2hc" firstAttribute="centerX" secondItem="NGp-69-VJF" secondAttribute="centerX" id="8lE-Ie-2AP"/>
+                            <constraint firstAttribute="trailing" secondItem="MeM-sN-nql" secondAttribute="trailing" constant="50" id="ahh-Wj-x0Q"/>
+                            <constraint firstItem="MeM-sN-nql" firstAttribute="centerY" secondItem="NGp-69-VJF" secondAttribute="centerY" id="pU6-kL-fvW"/>
                             <constraint firstItem="kGY-SP-2hc" firstAttribute="centerY" secondItem="NGp-69-VJF" secondAttribute="centerY" id="plT-7O-MmN"/>
                         </constraints>
                     </view>

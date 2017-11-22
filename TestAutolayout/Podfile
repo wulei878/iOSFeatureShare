@@ -20,3 +20,7 @@ target 'TestTodayExtension' do
     pod 'JSONModel'
     pod 'SDWebImage'
 end
+
+target 'TestNotificationContent' do
+    pod 'SDWebImage'
+end

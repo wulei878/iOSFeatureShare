@@ -44,8 +44,24 @@
     UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@"关注" style:UIPreviewActionStyleSelected handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
     }];
     UIPreviewAction *action2 = [UIPreviewAction actionWithTitle:@"分享" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        [self shareActionWithViewController:previewViewController];
     }];
     return @[action1,action2];
+}
+
+- (void)shareActionWithViewController:(UIViewController *)viewController {
+    NSString *text = @"斗鱼直播-每个人的直播平台";
+    NSURL *shareURL = [NSURL URLWithString:@"https://www.douyu.com"];
+    NSArray *activityItems = @[text,shareURL];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    activityVC.completionWithItemsHandler = ^(UIActivityType  _Nullable activityType, BOOL completed, NSArray * _Nullable returnedItems, NSError * _Nullable activityError) {
+        if (completed) {
+            NSLog(@"分享成功");
+        } else {
+            NSLog(@"分享失败");
+        }
+    };
+    [self presentViewController:activityVC animated:YES completion:nil];
 }
 
 - (UILabel *)detailLabel {

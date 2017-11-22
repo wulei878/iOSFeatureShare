@@ -36,6 +36,7 @@
 @property (nonatomic, strong) UILabel *openAppLabel;
 @property (nonatomic, strong) NSArray *dataList;
 @property (nonatomic, strong) UILabel *tableViewHeader;
+@property (nonatomic, strong) UIView *tableViewFooter;
 @end
 
 @implementation TodayViewController
@@ -53,18 +54,20 @@
     [super viewDidAppear:animated];
     
     // NSUserDefaults共享数据
-//    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.tv.douyu.live"];
-//    NSString *time = [shared objectForKey:@"TestAutolayoutTime"];
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.io.fanlv.potatso"];
+    NSString *time = [shared objectForKey:@"com.owen.iosfeature.todayextension.testAutolayoutTime"];
     
-    // NSFileManager共享数据
-    NSURL *containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.tv.douyu.live"];
-    containerURL = [containerURL URLByAppendingPathComponent:@"Library/Caches/widget"];
-    NSString *time = [NSString stringWithContentsOfURL:containerURL encoding:NSUTF8StringEncoding error:nil];
+//    // NSFileManager共享数据
+//    NSURL *containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.tv.douyu.live"];
+//    containerURL = [containerURL URLByAppendingPathComponent:@"Library/Caches/widget"];
+//    NSString *time = [NSString stringWithContentsOfURL:containerURL encoding:NSUTF8StringEncoding error:nil];
     
     if (time) {
         self.tableViewHeader.text = time;
         self.tableView.tableHeaderView = self.tableViewHeader;
     }
+    self.tableView.tableFooterView = self.tableViewFooter;
+    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
@@ -88,6 +91,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)changeRecommend {
+    [self.tableView reloadData];
+}
+
+- (void)viewMore {
+    [self openURLContainingAPP];
+}
+
 - (void)openURLContainingAPP {
     //scheme为app的scheme
     [self.extensionContext openURL:[NSURL URLWithString:@"TestTodayExtension://Test"]
@@ -100,7 +111,7 @@
     if (activeDisplayMode == NCWidgetDisplayModeCompact) {
         self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 120);
     } else {
-        self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 270);
+        self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 270 + 44);
     }
 }
 
@@ -188,7 +199,6 @@
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.dataSource = self;
         _tableView.delegate = self;
-        _tableView.tableFooterView = [[UIView alloc] init];
     }
     return _tableView;
 }
@@ -201,5 +211,23 @@
         _tableViewHeader.textAlignment = NSTextAlignmentCenter;
     }
     return _tableViewHeader;
+}
+
+- (UIView *)tableViewFooter {
+    if (!_tableViewFooter) {
+        _tableViewFooter = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+        _tableViewFooter.backgroundColor = [UIColor clearColor];
+        UIButton *changeButton = [[UIButton alloc] initWithFrame:CGRectMake(50, 0, 60, 44)];
+        [changeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [changeButton setTitle:@"换一批" forState:UIControlStateNormal];
+        [changeButton addTarget:self action:@selector(changeRecommend) forControlEvents:UIControlEventTouchUpInside];
+        UIButton *moreButton = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 130, 0, 80, 44)];
+        [moreButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [moreButton setTitle:@"查看更多" forState:UIControlStateNormal];
+        [moreButton addTarget:self action:@selector(viewMore) forControlEvents:UIControlEventTouchUpInside];
+        [_tableViewFooter addSubview:changeButton];
+        [_tableViewFooter addSubview:moreButton];
+    }
+    return _tableViewFooter;
 }
 @end
